@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+from zipfile import BadZipFile
+
 import atheris
 import logging
 import sys
@@ -18,7 +20,7 @@ def TestOneInput(data):
         ppt_f = io.BytesIO(data)
         pptx.Presentation(ppt_f)
         ppt_f.close()
-    except pptx.exc.PythonPptxError:
+    except (pptx.exc.PythonPptxError, BadZipFile):
         pass
 
 
