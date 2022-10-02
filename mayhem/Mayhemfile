@@ -1,7 +1,8 @@
 project: python-pptx
 target: load-fuzz
+testsuite:
+    - file://mayhem/testsuite
 
 cmds:
   - cmd: /src/mayhem/fuzz_load.py
     libfuzzer: true
-    max_length: 15900
