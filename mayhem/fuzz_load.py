@@ -16,7 +16,9 @@ logging.disable(logging.CRITICAL)
 @atheris.instrument_func
 def TestOneInput(data):
     try:
-        pptx.Presentation(io.BytesIO(data))
+        # Prepend package magic bytes
+        pptx_data = b"PK\05\06" + data
+        pptx.Presentation(io.BytesIO(pptx_data))
     except (pptx.exc.PythonPptxError, BadZipFile):
         pass
 
