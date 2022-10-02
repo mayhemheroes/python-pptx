@@ -16,10 +16,7 @@ logging.disable(logging.CRITICAL)
 @atheris.instrument_func
 def TestOneInput(data):
     try:
-        # Get two fuzzer python objects
-        ppt_f = io.BytesIO(data)
-        pptx.Presentation(ppt_f)
-        ppt_f.close()
+        pptx.Presentation(io.BytesIO(data))
     except (pptx.exc.PythonPptxError, BadZipFile):
         pass
 
