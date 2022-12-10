@@ -4,3 +4,4 @@ target: load-fuzz
 cmds:
   - cmd: /src/mayhem/fuzz_load.py
     libfuzzer: true
+    timeout: 8
