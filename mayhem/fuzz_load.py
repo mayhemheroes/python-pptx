@@ -6,7 +6,7 @@ import logging
 import sys
 import io
 
-with atheris.instrument_imports():
+with atheris.instrument_imports(include=['pptx']):
     import pptx
 
 # No logging
