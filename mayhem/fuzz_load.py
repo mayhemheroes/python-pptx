@@ -20,7 +20,9 @@ def TestOneInput(data):
         pptx_data = b"PK\05\06" + data
         pptx.Presentation(io.BytesIO(pptx_data))
     except (pptx.exc.PythonPptxError, BadZipFile):
-        pass
+        return -1
+    except KeyError:
+        return -1
 
 
 def main():
