@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 from zipfile import BadZipFile
 
+
 import atheris
 import logging
 import sys
 import io
+import zlib
 
 with atheris.instrument_imports(include=['pptx']):
     import pptx
@@ -19,9 +21,7 @@ def TestOneInput(data):
         # Prepend package magic bytes
         pptx_data = b"PK\05\06" + data
         pptx.Presentation(io.BytesIO(pptx_data))
-    except (pptx.exc.PythonPptxError, BadZipFile):
-        return -1
-    except KeyError:
+    except (pptx.exc.PythonPptxError, BadZipFile, KeyError, zlib.error, NotImplementedError, UnicodeDecodeError):
         return -1
     except ValueError as e:
         if 'seek' in str(e):
