@@ -5,3 +5,4 @@ cmds:
   - cmd: /src/mayhem/fuzz_load.py
     libfuzzer: true
     timeout: 8
+    max_length: 17000
