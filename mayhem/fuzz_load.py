@@ -23,6 +23,10 @@ def TestOneInput(data):
         return -1
     except KeyError:
         return -1
+    except ValueError as e:
+        if 'seek' in str(e):
+            return -1
+        raise
 
 
 def main():
